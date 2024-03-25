@@ -12,3 +12,4 @@ City-builder game in which the player plays as a king who is trying to make a na
 - Levels for buildings (manors, kingdom wall, etc)
 - Battle and war system
 - Diplomacy system
+- Events
