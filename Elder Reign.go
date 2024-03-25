@@ -4,6 +4,7 @@ import ("fmt")
 var population int = 100 // initialize the player to start with a population of 100
 var gold_amount int = 10000 // initialize the player to start with 10000 gold
 var housing_level int = 1 // initialize the player to start with housing level 1
+var mine_level = 1 // initialize the player to start with mining level 1
 var turn int = 1 // initialize the player to start on turn 1
 var king_name string
 var kingdom_name string
@@ -96,7 +97,92 @@ func population_increase() {
     
 }
 
-func upgrade_buildings() { // WORK IN PROGRESS
-    fmt.Println("Buildings to upgrade: ")
-    fmt.Println("Upgrade housing: ")
+func upgrade_buildings() {
+    
+    var upgrade_buildings_choice int
+    
+    fmt.Println("\nBuildings to upgrade: ")
+    fmt.Println("1. Upgrade housing")
+    fmt.Println("2. Upgrade mines")
+    fmt.Println("3. Upgrade walls")
+    
+    fmt.Print("Enter your choice: ")
+    fmt.Scan(&upgrade_buildings_choice)
+    
+    switch (upgrade_buildings_choice) {
+        case 1:
+            upgrade_housing()
+    }
+    
+}
+
+func upgrade_housing() {
+    
+    var upgrade_cost int
+    var upgrade_housing_choice int
+    
+    fmt.Println("\nHousing Level:", housing_level)
+
+    /* if (housing_level == 1) {
+        upgrade_cost == 250
+        fmt.Println("Cost of upgrade to level 2: ", upgrade_cost)
+    } */
+    
+    switch (housing_level) {
+        case 1:
+            upgrade_cost = 1000
+            fmt.Println("Cost of upgrade to level 2:", upgrade_cost)
+            fmt.Println("Would you like to upgrade? (1 for yes / 0 for no)")
+            fmt.Print("Enter your choice: ")
+            fmt.Scan(&upgrade_housing_choice)
+        case 2:
+            upgrade_cost = 5000
+            fmt.Println("Cost of upgrade to level 3:", upgrade_cost)
+            fmt.Println("Would you like to upgrade? (1 for yes / 0 for no)")
+            fmt.Print("Enter your choice: ")
+            fmt.Scan(&upgrade_housing_choice)
+        case 3:
+            upgrade_cost = 10000
+            fmt.Println("Cost of upgrade to level 4:", upgrade_cost)
+            fmt.Println("Would you like to upgrade? (1 for yes / 0 for no)")
+            fmt.Print("Enter your choice: ")
+            fmt.Scan(&upgrade_housing_choice)
+        case 4:
+            upgrade_cost = 50000
+            fmt.Println("Cost of upgrade to level 5:", upgrade_cost)
+            fmt.Println("Would you like to upgrade? (1 for yes / 0 for no)")
+            fmt.Print("Enter your choice: ")
+            fmt.Scan(&upgrade_housing_choice)
+            
+            /* if (upgrade_housing_choice == 1 && gold_amount >= upgrade_cost) {
+                gold_amount = gold_amount - upgrade_cost
+                housing_level = housing_level + 1
+                fmt.Println("New housing level:", housing_level)
+                fmt.Println("Remaining gold:", gold_amount)
+                options()
+            } else {
+                fmt.Println("Sorry, your majesty! We do not have the funds for that!")
+                options()
+            }
+            
+            if (upgrade_housing_choice == 0) {
+                upgrade_buildings()
+            } */
+    }
+    
+    if (upgrade_housing_choice == 1 && gold_amount >= upgrade_cost) {
+        gold_amount = gold_amount - upgrade_cost
+        housing_level = housing_level + 1
+        fmt.Println("New housing level:", housing_level)
+        fmt.Println("Remaining gold:", gold_amount)
+        options()
+    } else {
+        fmt.Println("Sorry, your majesty! We do not have the funds for that!")
+        options()
+        }
+            
+    if (upgrade_housing_choice == 0) {
+        upgrade_buildings()
+    }
+    
 }
