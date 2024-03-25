@@ -1,7 +1,12 @@
 package main
-import ("fmt")
+import (
+    "fmt"
+    "math/rand"
+    "time"
+    "math"
+)
 
-var population int = 100 // initialize the player to start with a population of 100
+var population float64 = 100 // initialize the player to start with a population of 100
 var gold_amount int = 10000 // initialize the player to start with 10000 gold
 var housing_level int = 1 // initialize the player to start with housing level 1
 var mine_level = 1 // initialize the player to start with mining level 1
@@ -59,9 +64,15 @@ func show_stats() {
 func turn_advance() {
     turn = turn + 1 // move to the next sequential turn
     fmt.Println("\nIt is now turn", turn) // tell the user what turn it is
+    
+    if (turn % 10 == 0) { // call the disasters function every 10 turns
+        disasters()
+    }
+    
     population_increase() // call the population increase function
     gold_increase() // call the gold increase function
     options() // call the options function so that the user automatically is returned to the main screen
+    
 }
 
 func gold_increase() {
@@ -185,4 +196,34 @@ func upgrade_housing() {
         upgrade_buildings()
     }
     
+}
+
+func disasters() {
+    
+    rand.Seed(time.Now().UnixNano()) // initialize the random number generator
+    var random_num int // declare the variable for the random number
+    min := 1 // declare the minimum for the random number starting from 1
+    max := 2 // declare the maximum for the random number in accordance with how many disasters there are
+    
+    random_num = rand.Intn(max - min + 1) + min
+    
+    switch (random_num) {
+        case 1:
+            famine()
+        case 2:
+            fire()
+    }
+    
+}
+
+func fire() {
+        population = population - (population * 0.2)
+        math.Ceil(population) // round the population to an integer whole number
+        fmt.Println("A blazing fire ravages your kingdom and a fifth of your citizens die. People scatter...")
+}
+
+func famine() {
+    population = population - (population * 0.5)
+    math.Ceil(population) // round the population to an integer whole number
+    fmt.Println("A hearty famine sweeps across your kingdom. People grow weary and destitue and your population growth starts to wain as half of your citizens perish...")
 }
