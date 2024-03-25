@@ -7,7 +7,7 @@ City-builder game in which the player plays as a king who is trying to make a na
 
 ### WIP Features ###
 - Achievements
-- Functioning economy (adding and increasing gold over time
+- Functioning economy (adding and increasing gold over time)
 - Investments
 - Levels for buildings (manors, kingdom wall, etc)
 - Battle and war system
